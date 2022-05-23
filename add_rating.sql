@@ -11,3 +11,11 @@ CREATE TABLE IF NOT EXISTS movies (
   id int PRIMARY KEY DEFAULT nextval('movies_id_sequence'),
   title varchar(30) NOT NULL
 );
+
+CREATE SEQUENCE IF NOT EXISTS ratings_id_sequence;
+CREATE TABLE IF NOT EXISTS ratings (
+  id int PRIMARY KEY DEFAULT nextval('ratings_id_sequence'),
+  value smallint NOT NULL,
+  user_id int NOT NULL REFERENCES users,
+  movie_id int NOT NULL REFERENCES movies
+);

@@ -19,3 +19,5 @@ CREATE TABLE IF NOT EXISTS ratings (
   user_id int NOT NULL REFERENCES users,
   movie_id int NOT NULL REFERENCES movies
 );
+
+ALTER TABLE movies ALTER COLUMN title TYPE varchar(100);

@@ -3,8 +3,8 @@ class HTTPRequest
     @request_string = request_string
   end
 
-  def method
-    request_string.split(" ").first
+  def method_and_uri
+    request_string.split(" ")[0..1].join(" ")
   end
 
   def params

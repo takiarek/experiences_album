@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Rating movies</title>
+  </head>
+  <body>
+    <form action="http://localhost:5001" method="post">
+      <label for="movie-select">Movies</label>
+      <select name="movie_id" id="movie-select" required>
+        <option value="">-- Choose a movie to rate --</option>
+        <option value="1">Everything Everywhere All at Once</option>
+        <option value="2">Inception</option>
+        <option value="3">Interstellar</option>
+        <option value="4">Matrix</option>
+      </select>
+
+      <br><br>
+
+      <label for="rating-select">Rates</label>
+      <select name="rating_value" id="rating-select" required>
+        <option value="">-- Rate the movie --</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+
+      <br><br>
+
+      <button type="subimt">Submit</button>
+  </body>
+</html>

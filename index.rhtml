@@ -9,10 +9,9 @@
       <label for="movie-select">Movies</label>
       <select name="movie_id" id="movie-select" required>
         <option value="">-- Choose a movie to rate --</option>
-        <option value="1">Everything Everywhere All at Once</option>
-        <option value="2">Inception</option>
-        <option value="3">Interstellar</option>
-        <option value="4">Matrix</option>
+        <% movies.each do |movie| %>
+          <option value=<%= movie.id %>><%= movie.title %></option>
+        <% end %>
       </select>
 
       <br><br>

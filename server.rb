@@ -1,6 +1,8 @@
 require 'socket'
+require 'erb'
 require_relative 'http_request'
 require_relative 'ratings_repository'
+require_relative 'movies_repository'
 
 server = TCPServer.new 5001
 
@@ -9,12 +11,14 @@ while session = server.accept
 
   case request.method_and_uri
   when "GET /"
-    index_html = File.read("index.html")
+    index_rhtml = File.read("index.rhtml")
+    erb = ERB.new(index_rhtml)
+    movies = MoviesRepository.new.all
 
     session.print "HTTP/1.1 200\r\n"
     session.print "Content-Type: text/html\r\n"
     session.print "\r\n"
-    session.print index_html
+    session.print erb.result
   when "POST /"
     RatingsRepository.new.create(**request.params)
 

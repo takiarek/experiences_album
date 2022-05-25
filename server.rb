@@ -22,7 +22,7 @@ while session = server.accept
   when "POST /"
     RatingsRepository.new.create(**request.params)
 
-    session.print "HTTP/1.1 200\r\n"
+    session.print "HTTP/1.1 201\r\n"
     session.print "Content-Type: text/html\r\n"
     session.print "\r\n"
     session.print "Rating saved!"

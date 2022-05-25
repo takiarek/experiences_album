@@ -2,6 +2,9 @@
 ## 1st iteration
 - [x] As a User I want to rate a movie I watched.
 - [x] As a User I want to see the movies I rated.
+## 2nd iteration
+- [ ] As a User I want to describe for what moods is watching the movie good for
+- [ ] As a User I want to see all the movies that are good for my current mood
 ## Backlog
 - [ ] As a User I want to see avarege rate from all users
 - [ ] As a User I want to request a movie to be added to the database.
@@ -13,8 +16,7 @@
   - [ ] would I watch it again someday, with different setup/other people
   - [ ] how old I was
 - [ ] As a User I want to describe the movie with keywords
-  - [ ] funny, immersive, watch on a date, watch with kids/family, watch with friends, watch alone, best in cinema, best for mood: [moods], thought provoking, heartwarming, \<my own keyword\>
-- [ ] As a User I want to see all the movies that are best for my current mood
+  - [ ] funny, immersive, watch on a date, watch with kids/family, watch with friends, watch alone, best in cinema, thought provoking, heartwarming, \<my own keyword\>
 - [ ] As an admin I want to add new movie
   - [ ] for Users to rate
   - [ ] with info

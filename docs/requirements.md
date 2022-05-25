@@ -4,6 +4,7 @@
 - [x] As a User I want to see the movies I rated.
 ## 2nd iteration
 - [ ] As a User I want to describe for what moods is watching the movie good for
+- [ ] As a User I want to update the moods I chose for a movie
 - [ ] As a User I want to see all the movies that are good for my current mood
 ## Backlog
 - [ ] As a User I want to see avarege rate from all users

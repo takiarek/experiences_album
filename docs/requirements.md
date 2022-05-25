@@ -1,7 +1,7 @@
 # Requirements
 ## 1st iteration
 - [x] As a User I want to rate a movie I watched.
-- [ ] As a User I want to see the movies I rated.
+- [x] As a User I want to see the movies I rated.
 ## Backlog
 - [ ] As a User I want to see avarege rate from all users
 - [ ] As a User I want to request a movie to be added to the database.

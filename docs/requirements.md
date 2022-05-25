@@ -14,7 +14,7 @@
   - [ ] how old I was
 - [ ] As a User I want to describe the movie with keywords
   - [ ] funny, immersive, watch on a date, watch with kids/family, watch with friends, watch alone, best in cinema, best for mood: [moods], thought provoking, heartwarming, \<my own keyword\>
-- As a User I want to see all the movies that are best for my current mood
+- [ ] As a User I want to see all the movies that are best for my current mood
 - [ ] As an admin I want to add new movie
   - [ ] for Users to rate
   - [ ] with info

@@ -3,9 +3,9 @@
 - [x] As a User I want to rate a movie I watched.
 - [x] As a User I want to see the movies I rated.
 ## 2nd iteration
-- [ ] As a User I want to describe for what moods is watching the movie good for
+- [ ] As a User I want to ascribe moods to a movie
 - [ ] As a User I want to update the moods I chose for a movie
-- [ ] As a User I want to see all the movies that are good for my current mood
+- [ ] As a User I want to see all the movies in a chosen moods
 ## Backlog
 - [ ] As a User I want to see avarege rate from all users
 - [ ] As a User I want to request a movie to be added to the database.

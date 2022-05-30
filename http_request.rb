@@ -8,8 +8,8 @@ class HTTPRequest
   end
 
   def params
-    params_string = request_string.split("\r\n\r\n")[1]&.split("&") || []
-    parse_params(params_string)
+    params_strings = request_string.split("\r\n\r\n")[1]&.split("&") || []
+    parse_params(params_strings)
   end
 
   private

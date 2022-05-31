@@ -1,21 +1,6 @@
 require 'net/http'
 require 'pg'
-
-def assert_equal(result, expected_result)
-  if result == expected_result
-    puts "Passed!"
-  else
-    puts "Failed!"
-    puts
-    puts "Expected result:"
-    puts
-    puts "#{expected_result.inspect}"
-    puts
-    puts "Actual result:"
-    puts
-    puts "#{result.inspect}"
-  end
-end
+require_relative 'test_helpers'
 
 def ratings_count(connection)
   connection.exec("SELECT COUNT(*) FROM ratings") { |result| result.first["count"].to_i }

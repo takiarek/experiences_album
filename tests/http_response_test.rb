@@ -1,4 +1,4 @@
-require_relative 'http_response'
+require_relative '../http_response'
 
 def assert_equal(result, expected_result)
   if result == expected_result

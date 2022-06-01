@@ -20,7 +20,7 @@ class HTTPRequest
   end
 
   def params
-    params_strings = request_string.split("\r\n\r\n")[1]&.split("&") || []
+    params_strings = body&.split("&") || []
     parse_params(params_strings)
   end
 
@@ -28,7 +28,11 @@ class HTTPRequest
   attr_reader :request_string
 
   def post_request_complete?
-    !request_string.split("\r\n\r\n")[1].nil?
+    !!body
+  end
+
+  def body
+    request_string.split("\r\n\r\n")[1]
   end
 
   def parse_params(params_strings)

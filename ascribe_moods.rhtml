@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Rating movies</title>
+  </head>
+  <body>
+    <form action="http://localhost:5001/ascribe_moods" method="post">
+      <label for="movie-select">Movies</label>
+      <select name="movie_id" id="movie-select" required>
+        <option value="">-- Choose movie --</option>
+        <% movies.each do |movie| %>
+          <option value=<%= movie.id %>><%= movie.title %></option>
+        <% end %>
+      </select>
+
+      <br><br>
+
+      <label for="moods-select">Rates</label>
+      <select name="moods_ids" id="moods-select" required multiple>
+        <option value="">-- Select moods --</option>
+        <% moods.each do |mood| %>
+          <option value=<%= mood.id %>><%= mood.name %></option>
+        <% end %>
+      </select>
+
+      <br><br>
+
+      <button type="subimt">Submit</button>
+  </body>
+</html>

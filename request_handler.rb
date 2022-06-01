@@ -2,6 +2,7 @@ require 'erb'
 require_relative 'http_response'
 require_relative 'ratings_repository'
 require_relative 'movies_repository'
+require_relative 'moods_repository'
 
 class RequestHandler
   def initialize(request:)
@@ -39,6 +40,26 @@ class RequestHandler
         status_code: 200,
         headers: ["Content-Type: text/html"],
         body: view
+      )
+    when "GET /ascribe_moods"
+      movies = MoviesRepository.new.all
+      moods = MoodsRepository.new.all
+
+      view_template = File.read("ascribe_moods.rhtml")
+      view = ERB.new(view_template).result(binding)
+
+      HTTPResponse.new(
+        status_code: 200,
+        headers: ["Content-Type: text/html"],
+        body: view
+      )
+    when "POST /ascribe_moods"
+      MoodsRepository.new.ascribe_to_movie(user_id: 1, **request.params)
+
+      HTTPResponse.new(
+        status_code: 201,
+        headers: ["Content-Type: text/html"],
+        body: "Moods saved!"
       )
     else
       HTTPResponse.new(status_code: 404)

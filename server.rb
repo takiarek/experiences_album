@@ -5,13 +5,9 @@ require_relative 'request_handler'
 server = TCPServer.new 5001
 
 while session = server.accept
-  request_string = session.readpartial(4096)
-  request = HTTPRequest.new(request_string: request_string)
+  request = HTTPRequest.new(request_string: session.readpartial(4096))
 
-  until request.complete? do
-    request_string << session.readpartial(4096)
-    request = HTTPRequest.new(request_string: request_string)
-  end
+  request << session.readpartial(4096) until request.complete?
 
   response = RequestHandler.new(request: request).run
 

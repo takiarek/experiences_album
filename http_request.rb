@@ -11,6 +11,10 @@ class HTTPRequest
     method == "GET"
   end
 
+  def <<(request_string_partial)
+    request_string << request_string_partial
+  end
+
   def method_and_uri
     request_string.split(" ")[0..1].join(" ")
   end

@@ -6,7 +6,7 @@ def http_request(request_string)
 end
 
 def complete?
-  puts __method__
+  print_test_name __method__
 
   request_string = ""
   assert_equal(http_request(request_string).complete?, false)
@@ -21,4 +21,18 @@ def complete?
   assert_equal(http_request(request_string).complete?, true)
 end
 
+def params
+  print_test_name __method__
+
+  request_string = ""
+  assert_equal(http_request(request_string).params, {})
+
+  request_string = "POST / HTTP/1.1\r\nHost: localhost:5001\r\n\r\nmovie_id=1&rating_value=2"
+  assert_equal(http_request(request_string).params, { movie_id: "1", rating_value: "2" })
+
+  request_string = "POST / HTTP/1.1\r\nHost: localhost:5001\r\n\r\nmovie_id=1&moods=2&moods=7&moods=12"
+  assert_equal(http_request(request_string).params, { movie_id: "1", moods: ["2", "7", "12"] })
+end
+
 complete?
+params

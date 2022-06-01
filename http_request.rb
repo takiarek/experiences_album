@@ -35,7 +35,13 @@ class HTTPRequest
     params_strings.each_with_object({}) do |param_string, params_hash|
       key, value = param_string.split("=")
 
-      params_hash[key.to_sym] = value
+      if params_hash[key.to_sym].nil?
+        params_hash[key.to_sym] = value
+      elsif params_hash[key.to_sym].kind_of?(Array)
+        params_hash[key.to_sym] << value
+      else
+        params_hash[key.to_sym] = [params_hash[key.to_sym], value]
+      end
     end
   end
 end

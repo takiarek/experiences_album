@@ -13,3 +13,9 @@ def assert_equal(result, expected_result)
     puts "#{result.inspect}"
   end
 end
+
+def print_test_name(name)
+  puts "------------------------------"
+  puts name
+  puts "------------------------------"
+end

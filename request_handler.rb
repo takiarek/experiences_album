@@ -15,7 +15,7 @@ class RequestHandler
     when "GET /"
       movies = MoviesRepository.new.all
 
-      view_template = File.read("views/index.rhtml")
+      view_template = File.read("views/movies_index.rhtml")
       view = ERB.new(view_template).result(binding)
 
       HTTPResponse.new(

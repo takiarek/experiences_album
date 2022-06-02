@@ -20,7 +20,7 @@ connection = PG.connect(dbname: "experiences_album")
 ratings_count_before = ratings_count(connection)
 
 begin
-  response = Net::HTTP.post_form(URI("http://localhost:5001"), "movie_id" => 1, "rating_value" => 2)
+  response = Net::HTTP.post_form(URI("http://localhost:5001/ratings"), "movie_id" => 1, "rating_value" => 2)
 rescue Errno::ECONNREFUSED
   puts "ERROR: Server not running!"
   return

@@ -36,7 +36,7 @@ class RequestHandler
         headers: ["Content-Type: text/html"],
         body: view
       )
-    when "POST /"
+    when "POST /ratings"
       RatingsRepository.new.create(**request.params)
 
       HTTPResponse.new(

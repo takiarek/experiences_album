@@ -1,5 +1,5 @@
 require_relative 'test_helpers'
-require_relative '../http_response'
+require_relative '../http/http_response'
 
 
 def when_all_arguments_provided

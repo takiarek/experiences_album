@@ -1,5 +1,5 @@
 require 'socket'
-require_relative 'http_request'
+require_relative 'http/http_request'
 require_relative 'request_handler'
 
 server = TCPServer.new 5001

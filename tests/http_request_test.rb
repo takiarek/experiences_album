@@ -1,5 +1,5 @@
 require_relative 'test_helpers'
-require_relative '../http_request'
+require_relative '../http/http_request'
 
 def http_request(request_string)
   HTTPRequest.new(request_string: request_string)

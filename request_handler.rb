@@ -23,6 +23,19 @@ class RequestHandler
         headers: ["Content-Type: text/html"],
         body: view
       )
+    when /GET \/movies\/\d/
+      movie_id = request.method_and_uri.split("/").last
+
+      movie = MoviesRepository.new.find(id: movie_id)
+
+      view_template = File.read("views/show_movie.rhtml")
+      view = ERB.new(view_template).result(binding)
+
+      HTTPResponse.new(
+        status_code: 200,
+        headers: ["Content-Type: text/html"],
+        body: view
+      )
     when "POST /"
       RatingsRepository.new.create(**request.params)
 

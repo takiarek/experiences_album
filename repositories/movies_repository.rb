@@ -14,4 +14,16 @@ class MoviesRepository
 
     movies
   end
+
+  def find(id:)
+    connection = PG.connect(dbname: "experiences_album")
+
+    movie = connection.exec("SELECT * FROM movies WHERE id = #{id}") do |result|
+      OpenStruct.new(**result.first)
+    end
+
+    connection.close
+
+    movie
+  end
 end

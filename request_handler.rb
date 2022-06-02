@@ -3,6 +3,7 @@ require_relative 'http_response'
 require_relative 'ratings_repository'
 require_relative 'movies_repository'
 require_relative 'moods_repository'
+require_relative 'moods_ascriptions_repository'
 
 class RequestHandler
   def initialize(request:)
@@ -54,7 +55,7 @@ class RequestHandler
         body: view
       )
     when "POST /ascribe_moods"
-      MoodsRepository.new.ascribe_to_movie(user_id: 1, **request.params)
+      MoodsAscriptionsRepository.new.create(user_id: 1, **request.params)
 
       HTTPResponse.new(
         status_code: 201,

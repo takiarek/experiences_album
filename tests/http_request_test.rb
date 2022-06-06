@@ -30,8 +30,11 @@ def params
   request_string = "POST / HTTP/1.1\r\nHost: localhost:5001\r\n\r\nmovie_id=1&rating_value=2"
   assert_equal(http_request(request_string).params, { movie_id: "1", rating_value: "2" })
 
-  request_string = "POST / HTTP/1.1\r\nHost: localhost:5001\r\n\r\nmovie_id=1&moods=2&moods=7&moods=12"
-  assert_equal(http_request(request_string).params, { movie_id: "1", moods: ["2", "7", "12"] })
+  request_string = "POST / HTTP/1.1\r\nHost: localhost:5001\r\n\r\nmovie_id=1&moods_ids[]=2"
+  assert_equal(http_request(request_string).params, { movie_id: "1", moods_ids: ["2"] })
+
+  request_string = "POST / HTTP/1.1\r\nHost: localhost:5001\r\n\r\nmovie_id=1&moods_ids[]=2&moods_ids[]=7&moods_ids[]=12"
+  assert_equal(http_request(request_string).params, { movie_id: "1", moods_ids: ["2", "7", "12"] })
 end
 
 complete?

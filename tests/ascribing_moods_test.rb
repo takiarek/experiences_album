@@ -13,7 +13,7 @@ end
 moods_ascribed_before = moods_ascribed_count(connection)
 
 begin
-  response = Net::HTTP.post_form(URI("http://localhost:5001/ascribe_moods"), "user_id" => 3, "movie_id" => 2, "moods_ids" => [9, 10, 17])
+  response = Net::HTTP.post_form(URI("http://localhost:5001/ascribe_moods"), "user_id" => 3, "movie_id" => 2, "moods_ids[]" => [9, 10, 17])
 rescue Errno::ECONNREFUSED
   puts "ERROR: Server not running!"
   return

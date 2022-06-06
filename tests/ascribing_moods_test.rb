@@ -10,7 +10,7 @@ def moods_ascribed_count(connection)
   end
 end
 
-moods_ascribed_before = moods_ascribed_count(connection)
+connection.exec("DELETE FROM moods_ascriptions")
 
 begin
   response = Net::HTTP.post_form(URI("http://localhost:5001/ascribe_moods"), "user_id" => 3, "movie_id" => 2, "moods_ids[]" => [9, 10, 17])
@@ -19,8 +19,6 @@ rescue Errno::ECONNREFUSED
   return
 end
 
-moods_ascribed_after = moods_ascribed_count(connection)
-
 assert_equal(response.code.to_i, 201)
 assert_equal(response.message, "Created")
-assert_equal(moods_ascribed_after, moods_ascribed_before + 3)
+assert_equal(moods_ascribed_count(connection), 3)

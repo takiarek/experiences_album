@@ -40,9 +40,8 @@ class RequestHandler
       RatingsRepository.new.create(**request.params)
 
       HTTPResponse.new(
-        status_code: 201,
-        headers: ["Content-Type: text/html"],
-        body: "Rating saved!"
+        status_code: 303,
+        headers: ["Content-Type: text/html", "Location: /movies/#{request.params[:movie_id]}"]
       )
     when "GET /my_ratings"
       ratings = RatingsRepository.new.for_user(user_id: 1)

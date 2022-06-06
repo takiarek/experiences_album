@@ -27,6 +27,7 @@ class RequestHandler
       movie_id = request.method_and_uri.split("/").last
 
       movie = MoviesRepository.new.find(id: movie_id)
+      moods = MoodsRepository.new.all
 
       view_template = File.read("views/show_movie.rhtml")
       view = ERB.new(view_template).result(binding)
@@ -47,18 +48,6 @@ class RequestHandler
       ratings = RatingsRepository.new.for_user(user_id: 1)
 
       view_template = File.read("views/my_ratings.rhtml")
-      view = ERB.new(view_template).result(binding)
-
-      HTTPResponse.new(
-        status_code: 200,
-        headers: ["Content-Type: text/html"],
-        body: view
-      )
-    when "GET /ascribe_moods"
-      movies = MoviesRepository.new.all
-      moods = MoodsRepository.new.all
-
-      view_template = File.read("views/ascribe_moods.rhtml")
       view = ERB.new(view_template).result(binding)
 
       HTTPResponse.new(

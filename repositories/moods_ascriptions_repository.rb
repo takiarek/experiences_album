@@ -6,7 +6,7 @@ class MoodsAscriptionsRepository
       "(#{user_id}, #{movie_id}, #{mood_id})"
     end
 
-    sql_string = "INSERT INTO movies_moods_by_users (user_id, movie_id, mood_id) VALUES " << values.join(", ")
+    sql_string = "INSERT INTO moods_ascriptions (user_id, movie_id, mood_id) VALUES " << values.join(", ")
 
     connection.exec(sql_string)
   end

@@ -5,7 +5,7 @@ require_relative 'test_helpers'
 connection = PG.connect(dbname: "experiences_album")
 
 def moods_ascribed_count(connection)
-  connection.exec("SELECT COUNT(*) FROM movies_moods_by_users WHERE user_id = 3 AND movie_id = 2") do |result|
+  connection.exec("SELECT COUNT(*) FROM moods_ascriptions WHERE user_id = 3 AND movie_id = 2") do |result|
     result.first["count"].to_i
   end
 end

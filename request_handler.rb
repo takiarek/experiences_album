@@ -28,6 +28,7 @@ class RequestHandler
 
       movie = MoviesRepository.new.find(id: movie_id)
       moods = MoodsRepository.new.all
+      ascribed_moods_ids = MoodsAscriptionsRepository.new.where(user_id: 1, movie_id: movie.id, only: ["mood_id"]).map(&:mood_id)
 
       view_template = File.read("views/show_movie.rhtml")
       view = ERB.new(view_template).result(binding)
@@ -56,7 +57,7 @@ class RequestHandler
         body: view
       )
     when "POST /ascribe_moods"
-      MoodsAscriptionsRepository.new.create(user_id: 1, **request.params)
+      MoodsAscriptionsRepository.new.upsert(user_id: 1, **request.params)
 
       HTTPResponse.new(
         status_code: 201,

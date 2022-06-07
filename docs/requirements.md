@@ -4,7 +4,7 @@
 - [x] As a User I want to see the movies I rated.
 ## 2nd iteration
 - [x] As a User I want to ascribe moods to a movie
-- [ ] As a User I want to update the moods I chose for a movie
+- [x] As a User I want to update the moods I chose for a movie
 - [ ] As a User I want to see all the movies in a chosen moods
 ## Backlog
 - [ ] As a User I want to see avarege rate from all users

@@ -19,3 +19,9 @@ def print_test_name(name)
   puts name
   puts "------------------------------"
 end
+
+def moods_ascribed_count(connection)
+  connection.exec("SELECT COUNT(*) FROM moods_ascriptions") do |result|
+    result.first["count"].to_i
+  end
+end

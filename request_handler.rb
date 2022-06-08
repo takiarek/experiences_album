@@ -11,7 +11,7 @@ class RequestHandler
   end
 
   def run
-    case request.method_and_uri
+    case request.method_and_path
     when "GET /"
       movies = MoviesRepository.new.all
 
@@ -24,7 +24,7 @@ class RequestHandler
         body: view
       )
     when /GET \/movies\/\d/
-      movie_id = request.method_and_uri.split("/").last
+      movie_id = request.method_and_path.split("/").last
 
       movie = MoviesRepository.new.find(id: movie_id)
       moods = MoodsRepository.new.all

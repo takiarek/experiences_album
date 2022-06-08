@@ -4,8 +4,6 @@ class HTTPRequest
   end
 
   def complete?
-    method = method_and_uri.split.first
-
     return post_request_complete? if method == "POST"
 
     method == "GET"
@@ -15,17 +13,39 @@ class HTTPRequest
     request_string << request_string_partial
   end
 
-  def method_and_uri
-    request_string.split(" ")[0..1].join(" ")
+  def method_and_path
+    "#{method} #{path}"
   end
 
   def params
-    params_strings = body&.split("&") || []
+    params_strings = body&.split("&") || [] if method == "POST"
+    params_strings = query&.split("&") || [] if method == "GET"
+
     parse_params(params_strings)
   end
 
   private
   attr_reader :request_string
+
+  def method
+    start_line.split(" ").first
+  end
+
+  def path
+    uri.split("?").first
+  end
+
+  def query
+    uri.split("?")[1]
+  end
+
+  def uri
+    start_line.split(" ")[1]
+  end
+
+  def start_line
+    request_string.split("\r\n").first
+  end
 
   def post_request_complete?
     !!body

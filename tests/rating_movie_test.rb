@@ -28,7 +28,7 @@ end
 
 ratings_count_after = ratings_count(connection)
 
-assert_equal(response.code.to_i, 201)
-assert_equal(response.message, "Created")
+assert_equal(response.code.to_i, 303)
+assert_equal(response.message, "See Other")
 assert_equal(ratings_count_after, ratings_count_before + 1)
 assert_equal(last_rating(connection), {"movie_id" => 1, "rating_value" => 2})

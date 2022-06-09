@@ -37,6 +37,7 @@ class HTTPResponse
     {
       200 => "OK",
       201 => "Created",
+      303 => "See Other",
       404 => "Not Found",
     }[status_code]
   end

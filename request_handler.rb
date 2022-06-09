@@ -12,8 +12,8 @@ class RequestHandler
 
   def run
     case request.method_and_path
-    when "GET /"
-      movies = MoviesRepository.new.all
+    when "GET /", "GET /movies"
+      movies = request.params.any? ? MoviesRepository.new.in_moods(**request.params) : MoviesRepository.new.all
 
       view_template = File.read("views/movies_index.rhtml")
       view = ERB.new(view_template).result(binding)
@@ -63,6 +63,17 @@ class RequestHandler
         status_code: 201,
         headers: ["Content-Type: text/html"],
         body: "Moods saved!"
+      )
+    when "GET /movies_in_moods_search"
+      moods = MoodsRepository.new.all
+
+      view_template = File.read("views/movies_in_moods_search.rhtml")
+      view = ERB.new(view_template).result(binding)
+
+      HTTPResponse.new(
+        status_code: 200,
+        headers: ["Content-Type: text/html"],
+        body: view
       )
     else
       HTTPResponse.new(status_code: 404)

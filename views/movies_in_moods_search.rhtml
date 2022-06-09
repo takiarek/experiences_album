@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Find movies in chosen moods</title>
+  </head>
+  <body>
+    <form action="/movies" method="get">
+      <label for="moods_select">Select moods</label>
+      <select id="moods_select" name="moods_ids[]" required multiple>
+        <option value="">-- Select moods --</option>
+        <% moods.each do |mood| %>
+          <option value=<%= mood.id %>><%= mood.name %></option>
+        <% end %>
+      </select>
+      <br>
+      <button type="submit">Find</button>
+    </form>
+  </body>
+</html>

@@ -5,6 +5,9 @@
     <title>All movies</title>
   </head>
   <body>
+    <% unless movies.any? %>
+      0 results
+    <% end %>
     <ul style="list-style: none">
       <% movies.each do |movie| %>
         <li style="margin-bottom: 10px">

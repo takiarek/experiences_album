@@ -6,7 +6,7 @@
   </head>
   <body>
     <h2><%= movie.title %></h2>
-    <form action="http://localhost:5001/ratings" method="post">
+    <form action="/ratings" method="post">
       <input type="hidden" name="movie_id" value=<%= movie.id %>>
       <label for="rating-select">Rate the title</label>
       <br>
@@ -31,7 +31,7 @@
 
     <br><br>
 
-    <form action="http://localhost:5001/ascribe_moods" method="post">
+    <form action="/ascribe_moods" method="post">
       <input type="hidden" name="movie_id" value=<%= movie.id %>>
       <label for="moods-select">Moods</label>
       <br>

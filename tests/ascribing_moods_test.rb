@@ -13,6 +13,6 @@ rescue Errno::ECONNREFUSED
   return
 end
 
-assert_equal(response.code.to_i, 201)
-assert_equal(response.message, "Created")
+assert_equal(response.code.to_i, 303)
+assert_equal(response.message, "See Other")
 assert_equal(moods_ascribed_count(connection), 3)

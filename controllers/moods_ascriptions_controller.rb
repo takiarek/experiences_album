@@ -10,9 +10,8 @@ class MoodsAscriptionsController
     MoodsAscriptionsRepository.new.upsert(user_id: 1, **request.params)
 
     HTTPResponse.new(
-      status_code: 201,
-      headers: ["Content-Type: text/html"],
-      body: "Moods saved!"
+      status_code: 303,
+      headers: ["Content-Type: text/html", "Location: /movies/#{request.params[:movie_id]}"]
     )
   end
 

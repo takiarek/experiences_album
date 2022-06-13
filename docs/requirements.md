@@ -8,7 +8,7 @@
 - [x] As a User I want to see all the movies in a chosen moods
 ## 3rd iteration
 - [x] As a User I want to easily navigate between pages
-- [ ] As a User I want to filter the movies index view with moods instead of using separate search
+- [x] As a User I want to filter the movies index view with moods instead of using separate search
 - [ ] As a User I want to see my ratings of a movie in the movie view
 ## Backlog
 - [ ] As a User I want to see avarege rate from all users

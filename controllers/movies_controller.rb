@@ -10,6 +10,7 @@ class MoviesController
 
   def index
     movies = request.params.any? ? MoviesRepository.new.in_moods(**request.params) : MoviesRepository.new.all
+    moods = MoodsRepository.new.all
 
     view_template = File.read("views/movies_index.rhtml")
     view = ERB.new(view_template).result(binding)
@@ -29,19 +30,6 @@ class MoviesController
     ascribed_moods_ids = MoodsAscriptionsRepository.new.where(user_id: 1, movie_id: movie.id, only: ["mood_id"]).map(&:mood_id)
 
     view_template = File.read("views/show_movie.rhtml")
-    view = ERB.new(view_template).result(binding)
-
-    HTTPResponse.new(
-      status_code: 200,
-      headers: ["Content-Type: text/html"],
-      body: view
-    )
-  end
-
-  def in_moods_search
-    moods = MoodsRepository.new.all
-
-    view_template = File.read("views/movies_in_moods_search.rhtml")
     view = ERB.new(view_template).result(binding)
 
     HTTPResponse.new(

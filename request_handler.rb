@@ -20,8 +20,6 @@ class RequestHandler
       RatingsController.new(request: request).index
     when "POST /ascribe_moods"
       MoodsAscriptionsController.new(request: request).create
-    when "GET /movies_in_moods_search"
-      MoviesController.new(request: request).in_moods_search
     else
       HTTPResponse.new(status_code: 404)
     end

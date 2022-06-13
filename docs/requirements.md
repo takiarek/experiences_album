@@ -9,6 +9,7 @@
 ## 3rd iteration
 - [ ] As a User I want to easily navigate between pages
 - [ ] As a User I want to filter the movies index view with moods instead of using separate search
+- [ ] As a User I want to see my ratings of a movie in the movie view
 ## Backlog
 - [ ] As a User I want to see avarege rate from all users
 - [ ] As a User I want to request a movie to be added to the database.

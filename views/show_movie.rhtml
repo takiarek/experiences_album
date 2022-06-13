@@ -5,6 +5,7 @@
     <title>All movies</title>
   </head>
   <body>
+    <a href="/">Home</a>
     <h2><%= movie.title %></h2>
     <form action="/ratings" method="post">
       <input type="hidden" name="movie_id" value=<%= movie.id %>>

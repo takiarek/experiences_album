@@ -13,17 +13,14 @@ class RatingsRepository
     connection.close
   end
 
-  def for_user(user_id:)
+  def avarage_for_movie(user_id:, movie_id:)
     connection = PG.connect(dbname: "experiences_album")
+    connection.type_map_for_results = PG::BasicTypeMapForResults.new(connection)
 
-    ratings = connection.exec("SELECT movies.title as movie_title, ROUND(AVG(ratings.value), 2) as avarage_rating from movies, ratings WHERE ratings.user_id=1 AND ratings.movie_id=movies.id GROUP BY movie_title") do |result|
-      result.map do |rating|
-        OpenStruct.new(movie_title: rating["movie_title"], avarage_rating: rating["avarage_rating"])
-      end
-    end
+    result = connection.exec("SELECT ROUND(AVG(ratings.value), 2) as avarage_rating from ratings WHERE ratings.user_id=1 AND ratings.movie_id=#{movie_id}")
 
     connection.close
 
-    ratings
+    result.first["avarage_rating"]
   end
 end

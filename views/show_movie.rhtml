@@ -7,6 +7,11 @@
   <body>
     <a href="/">Home</a>
     <h2><%= movie.title %></h2>
+    <% if avarage_rating %>
+      <p>Your avarage rating: <%= avarage_rating %></p>
+    <% else %>
+      <p>You haven't rated this movie yet.</p>
+    <% end %>
     <form action="/ratings" method="post">
       <input type="hidden" name="movie_id" value=<%= movie.id %>>
       <label for="rating-select">Rate the title</label>

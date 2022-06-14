@@ -20,6 +20,21 @@ class RatingsRepositoryTest
     assert_equal(ratings.map(&:value), [10,5,7])
   end
 
+  def avarage_for_movie
+    print_test_name(__method__)
+
+    connection.exec("DELETE FROM ratings")
+
+    ratings_repository.create(movie_id: 1, rating_value: 5)
+    ratings_repository.create(movie_id: 1, rating_value: 3)
+    ratings_repository.create(movie_id: 2, rating_value: 10)
+
+    avarage_rating = ratings_repository.avarage_for_movie(user_id: 1, movie_id: 1)
+    assert_equal(avarage_rating, 4)
+    avarage_rating = ratings_repository.avarage_for_movie(user_id: 1, movie_id: 2)
+    assert_equal(avarage_rating, 10)
+  end
+
   private
 
   def ratings_repository
@@ -37,3 +52,4 @@ end
 test = RatingsRepositoryTest.new
 
 test.create
+test.avarage_for_movie

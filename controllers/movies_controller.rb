@@ -30,6 +30,7 @@ class MoviesController
     avarage_rating = RatingsRepository.new.avarage_for_movie(user_id: 1, movie_id: movie.id)
     avarage_rating = avarage_rating.to_f if avarage_rating
     ascribed_moods_ids = MoodsAscriptionsRepository.new.where(user_id: 1, movie_id: movie.id, only: ["mood_id"]).map(&:mood_id)
+    show_flash_message = request.headers["Referer"].match?(/movies\/#{movie.id}/)
 
     view_template = File.read("views/show_movie.rhtml")
     view = ERB.new(view_template).result(binding)

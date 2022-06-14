@@ -24,6 +24,18 @@ class HTTPRequest
     parse_params(params_strings)
   end
 
+  def headers
+    request_string.split("\r\n").drop(1).reduce({}) do |hash, header|
+      break hash if header.empty?
+
+      key,value = header.split(": ")
+
+      hash[key] = value
+
+      hash
+    end
+  end
+
   private
   attr_reader :request_string
 

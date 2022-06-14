@@ -50,6 +50,14 @@ def params
   assert_equal(http_request(request_string).params, { movie_id: "1", moods_ids: ["2", "7"] })
 end
 
+def headers
+  print_test_name __method__
+
+  request_string = "GET / HTTP/1.1\r\nHost: localhost:5001\r\nReferer: http://localhost:5001/movies/2\r\n\r\nmovie_id=1&rating_value=2"
+  assert_equal(http_request(request_string).headers, { "Host" => "localhost:5001", "Referer" => "http://localhost:5001/movies/2" })
+end
+
 complete?
 method_and_path
 params
+headers

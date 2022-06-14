@@ -5,6 +5,10 @@
     <title>All movies</title>
   </head>
   <body>
+    <% if show_flash_message %>
+      <div id="flash-message" style="color: green">Your form is submitted!</div>
+      <br>
+    <% end %>
     <a href="/">Home</a>
     <h2><%= movie.title %></h2>
     <% if avarage_rating %>

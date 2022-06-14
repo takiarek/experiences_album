@@ -16,8 +16,6 @@ class RequestHandler
       MoviesController.new(request: request).show
     when "POST /ratings"
       RatingsController.new(request: request).create
-    when "GET /my_ratings"
-      RatingsController.new(request: request).index
     when "POST /ascribe_moods"
       MoodsAscriptionsController.new(request: request).create
     else

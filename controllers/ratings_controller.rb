@@ -7,19 +7,6 @@ class RatingsController
     @request = request
   end
 
-  def index
-    ratings = RatingsRepository.new.for_user(user_id: 1)
-
-    view_template = File.read("views/my_ratings.rhtml")
-    view = ERB.new(view_template).result(binding)
-
-    HTTPResponse.new(
-      status_code: 200,
-      headers: ["Content-Type: text/html"],
-      body: view
-    )
-  end
-
   def create
     RatingsRepository.new.create(**request.params)
 
